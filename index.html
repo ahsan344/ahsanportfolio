@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Ahsan Arshad · Senior QA Engineer | Modern Portfolio</title>
+  <title>Ahsan Arshad · Animated QA Portfolio | Industry Style</title>
   <!-- Google Fonts & Font Awesome 6 -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- AOS Library -->
+  <!-- AOS Animation Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     * {
@@ -22,6 +22,7 @@
       color: #0a2a38;
       line-height: 1.5;
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
     .container {
@@ -30,7 +31,7 @@
       padding: 2rem 2rem;
     }
 
-    /* ========== REDESIGNED HERO - MODERN, CLEAN, IMPACTFUL ========== */
+    /* ========== REDESIGNED HERO WITH ANIMATIONS ========== */
     .hero {
       background: linear-gradient(105deg, #0b2b38 0%, #124f6b 100%);
       border-radius: 2rem;
@@ -38,10 +39,15 @@
       position: relative;
       overflow: hidden;
       box-shadow: 0 25px 40px -18px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s;
+      animation: heroGlow 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
     }
 
-    /* abstract shapes for visual depth */
+    @keyframes heroGlow {
+      0% { opacity: 0; transform: scale(0.98); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* animated particles */
     .hero::before {
       content: '';
       position: absolute;
@@ -52,6 +58,7 @@
       background: radial-gradient(circle, rgba(80, 200, 240, 0.2), transparent 70%);
       border-radius: 50%;
       pointer-events: none;
+      animation: floatParticle 12s infinite alternate;
     }
 
     .hero::after {
@@ -64,6 +71,17 @@
       background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 70%);
       border-radius: 50%;
       pointer-events: none;
+      animation: floatParticle2 10s infinite alternate;
+    }
+
+    @keyframes floatParticle {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+      100% { transform: translate(30px, 20px) scale(1.2); opacity: 0.6; }
+    }
+
+    @keyframes floatParticle2 {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+      100% { transform: translate(-20px, -30px) scale(1.3); opacity: 0.5; }
     }
 
     .hero-inner {
@@ -75,11 +93,6 @@
       padding: 2.2rem 2.8rem;
       position: relative;
       z-index: 2;
-      backdrop-filter: blur(0px);
-    }
-
-    .hero-info {
-      flex: 2;
     }
 
     .hero-info h1 {
@@ -91,7 +104,18 @@
       -webkit-background-clip: text;
       color: transparent;
       margin-bottom: 0.6rem;
-      line-height: 1.2;
+      animation: slideInLeft 0.8s ease-out;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
     .hero-tag {
@@ -107,6 +131,12 @@
       margin: 0.6rem 0 0.9rem 0;
       border: 1px solid rgba(255, 255, 255, 0.25);
       color: white;
+      animation: pulseSoft 2s infinite, fadeInUp 0.6s ease-out 0.2s both;
+    }
+
+    @keyframes pulseSoft {
+      0%, 100% { transform: scale(1); background: rgba(255,255,255,0.12); }
+      50% { transform: scale(1.02); background: rgba(255,255,255,0.2); }
     }
 
     .contact-details {
@@ -125,21 +155,22 @@
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      transition: all 0.25s ease;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       text-decoration: none;
       color: #f0f9ff;
       backdrop-filter: blur(4px);
       border: 1px solid rgba(255,255,255,0.1);
+      animation: fadeInUp 0.6s ease-out 0.3s both;
     }
 
     .contact-details a:hover, .contact-details span:hover {
       background: #2c7aa0;
-      transform: translateY(-3px);
+      transform: translateY(-4px) scale(1.02);
       box-shadow: 0 10px 18px -8px rgba(0,0,0,0.3);
-      border-color: rgba(255,255,255,0.3);
+      border-color: rgba(255,255,255,0.4);
     }
 
-    /* ========== MODERN AVATAR / PHOTO STYLING - PROFESSIONAL & ELEGANT ========== */
+    /* avatar with floating animation */
     .hero-avatar {
       background: linear-gradient(145deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
       border-radius: 50%;
@@ -149,10 +180,17 @@
       transition: transform 0.3s ease, box-shadow 0.3s;
       cursor: pointer;
       border: 1px solid rgba(255,255,255,0.3);
+      animation: floatAvatar 4s ease-in-out infinite;
+    }
+
+    @keyframes floatAvatar {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
     }
 
     .hero-avatar:hover {
-      transform: scale(1.02);
+      transform: scale(1.03) translateY(-2px);
       box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.5);
     }
 
@@ -163,12 +201,9 @@
       border-radius: 50%;
       border: 3px solid white;
       background: #eef2f5;
-      transition: all 0.2s;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      display: block;
+      transition: all 0.3s;
     }
 
-    /* modern upload overlay */
     .img-upload-note {
       font-size: 0.7rem;
       text-align: center;
@@ -182,20 +217,34 @@
       backdrop-filter: blur(4px);
     }
 
-    /* section cards */
+    /* animated section cards */
     .section-card {
       background: #ffffff;
       border-radius: 1.8rem;
       padding: 2rem 2rem;
       margin-bottom: 2rem;
-      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04), 0 2px 5px rgba(0, 0, 0, 0.02);
-      transition: all 0.3s ease;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04);
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       border: 1px solid rgba(0, 0, 0, 0.03);
+      opacity: 0;
+      animation: cardReveal 0.7s forwards;
+      animation-delay: calc(var(--order, 0) * 0.08s);
+    }
+
+    @keyframes cardReveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
     }
 
     .section-card:hover {
-      box-shadow: 0 20px 30px -12px rgba(0, 20, 40, 0.12);
-      transform: translateY(-3px);
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 25px 35px -14px rgba(0, 20, 40, 0.2);
     }
 
     .section-title {
@@ -213,9 +262,14 @@
     .section-title i {
       color: #2c8eb3;
       font-size: 1.6rem;
+      transition: transform 0.3s ease;
     }
 
-    /* experience cards refined */
+    .section-card:hover .section-title i {
+      transform: rotate(8deg) scale(1.1);
+    }
+
+    /* experience cards with slide animation on hover */
     .experience-wrapper {
       display: flex;
       flex-direction: column;
@@ -226,15 +280,32 @@
       background: #f9fdfe;
       border-radius: 1.2rem;
       padding: 1.2rem 1.5rem;
-      transition: all 0.25s;
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       border-left: 4px solid #2c8eb3;
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(44, 142, 179, 0.05), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .exp-card:hover::before {
+      left: 100%;
     }
 
     .exp-card:hover {
       background: #ffffff;
-      transform: translateX(6px);
-      box-shadow: 0 12px 18px -10px rgba(0, 0, 0, 0.08);
+      transform: translateX(8px) scale(1.01);
+      box-shadow: 0 12px 20px -10px rgba(0, 0, 0, 0.1);
       border-left-width: 6px;
     }
 
@@ -250,32 +321,11 @@
       font-size: 1.25rem;
       font-weight: 700;
       color: #0c4e6e;
+      transition: color 0.2s;
     }
 
-    .exp-company {
-      font-weight: 600;
-      color: #2c6a4e;
-      background: #e0f0f5;
-      padding: 0.2rem 0.8rem;
-      border-radius: 40px;
-      font-size: 0.8rem;
-    }
-
-    .exp-date {
-      font-size: 0.8rem;
-      background: #eef2f7;
-      padding: 0.2rem 0.8rem;
-      border-radius: 30px;
-      color: #2c5a6e;
-      font-weight: 500;
-    }
-
-    .job-desc {
-      list-style: none;
-      margin-top: 0.8rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
+    .exp-card:hover .exp-title {
+      color: #1a7fa3;
     }
 
     .job-desc li {
@@ -287,15 +337,15 @@
       align-items: center;
       gap: 0.5rem;
       color: #1f5a77;
+      transition: all 0.2s;
     }
 
-    .skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin: 1rem 0 0.5rem;
+    .job-desc li:hover {
+      transform: translateY(-2px);
+      background: #e2edf5;
     }
 
+    /* skill badges with pop animation */
     .skill-badge {
       background: #e5f2f9;
       padding: 0.45rem 1.2rem;
@@ -303,11 +353,19 @@
       font-size: 0.8rem;
       font-weight: 600;
       color: #135e7c;
-      transition: all 0.2s;
+      transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.2);
       cursor: default;
       border: 1px solid rgba(44, 142, 179, 0.2);
     }
 
+    .skill-badge:hover {
+      transform: scale(1.08) translateY(-3px);
+      background: #d1e6f0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      border-color: #2c8eb3;
+    }
+
+    /* project cards with scale & fade */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
@@ -319,40 +377,40 @@
       border-radius: 1.2rem;
       padding: 1.2rem;
       border: 1px solid #e2edf2;
-      transition: all 0.25s ease;
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.2);
       cursor: pointer;
     }
 
     .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 24px -12px rgba(0, 0, 0, 0.12);
-      border-color: #9bc7e0;
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 30px -14px rgba(0, 0, 0, 0.15);
+      border-color: #7bb6d0;
     }
 
     .project-icon {
       font-size: 2rem;
       color: #1e6f8f;
       margin-bottom: 0.6rem;
+      transition: transform 0.3s ease;
     }
 
-    .project-name {
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 0.3rem;
+    .project-card:hover .project-icon {
+      transform: rotate(5deg) scale(1.15);
     }
 
-    .edu-modern {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
+    /* education items with slide effect */
     .edu-item-modern {
       background: #f9fcff;
       border-radius: 1.2rem;
       padding: 1rem 1.5rem;
       border-left: 5px solid #2c8eb3;
-      transition: 0.2s;
+      transition: all 0.3s ease;
+    }
+
+    .edu-item-modern:hover {
+      transform: translateX(8px);
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
     .lang-panel {
@@ -364,6 +422,12 @@
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
+      transition: all 0.3s;
+    }
+
+    .lang-panel:hover {
+      transform: scale(1.01);
+      background: #e6f0f7;
     }
 
     footer {
@@ -373,6 +437,23 @@
       margin-top: 1rem;
       font-size: 0.85rem;
       color: #3b6e8b;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     @media (max-width: 720px) {
@@ -391,33 +472,21 @@
         width: 130px;
         height: 130px;
       }
-      .exp-header {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      .contact-details {
-        justify-content: center;
-      }
     }
 
-    [data-aos] {
-      transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    /* nice floating effect for avatar */
-    @keyframes softGlow {
-      0% { box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
-      100% { box-shadow: 0 12px 28px rgba(0, 120, 160, 0.3); }
-    }
-    .hero-avatar {
-      animation: softGlow 3s infinite alternate;
-    }
+    /* staggered animations for section cards */
+    .section-card:nth-child(2) { --order: 1; }
+    .section-card:nth-child(3) { --order: 2; }
+    .section-card:nth-child(4) { --order: 3; }
+    .section-card:nth-child(5) { --order: 4; }
+    .section-card:nth-child(6) { --order: 5; }
+    .section-card:nth-child(7) { --order: 6; }
   </style>
 </head>
 <body>
 <div class="container">
-  <!-- REDESIGNED HERO - Professional & Premium Header -->
-  <div class="hero" data-aos="fade-up" data-aos-duration="800">
+  <!-- Animated Hero Section -->
+  <div class="hero">
     <div class="hero-inner">
       <div class="hero-info">
         <h1>Ahsan Arshad</h1>
@@ -431,9 +500,8 @@
           <span><i class="fas fa-globe"></i> Pakistani | DOB: 23/01/1997</span>
         </div>
       </div>
-      <!-- Elegant photo container with better visual hierarchy -->
       <div class="hero-avatar" id="avatarContainer">
-        <img id="profileImage" class="avatar-img" src="DSC_0894.JPG" alt="Ahsan Arshad professional photo">
+        <img id="profileImage" class="avatar-img" src="https://ui-avatars.com/api/?background=1A6A8A&color=fff&rounded=true&size=160&name=Ahsan+Arshad&font-size=0.38&bold=true" alt="Ahsan Arshad">
         <div class="img-upload-note">
           <i class="fas fa-camera"></i> <span id="uploadHint">Click to update</span>
         </div>
@@ -441,14 +509,14 @@
     </div>
   </div>
 
-  <!-- About section -->
-  <div class="section-card" data-aos="fade-up" data-aos-delay="50">
+  <!-- About Me -->
+  <div class="section-card">
     <div class="section-title"><i class="fas fa-user-check"></i> About Me</div>
     <p style="font-size: 1rem; line-height: 1.6; color: #1e4a62;">Detail-oriented QA Engineer with 3+ years of experience in manual testing, defect lifecycle management, and Agile environments. Currently pursuing Professional Master's in IT at RTU Liepaja, Latvia. Proven track record in delivering high-quality software releases through systematic test planning, regression cycles, and cross-functional collaboration. Passionate about building reliable digital products and implementing quality-first mindset across teams.</p>
   </div>
 
-  <!-- WORK EXPERIENCE - Refined, clean and professional -->
-  <div class="section-card" data-aos="fade-up" data-aos-delay="100">
+  <!-- Work Experience -->
+  <div class="section-card">
     <div class="section-title"><i class="fas fa-briefcase"></i> Work Experience</div>
     <div class="experience-wrapper">
       <div class="exp-card">
@@ -490,7 +558,7 @@
   </div>
 
   <!-- Technical Skills -->
-  <div class="section-card" data-aos="fade-up" data-aos-delay="150">
+  <div class="section-card">
     <div class="section-title"><i class="fas fa-microchip"></i> Technical Expertise</div>
     <div style="margin-bottom: 0.6rem;"><strong>🧪 QA & Testing Stack</strong></div>
     <div class="skills-grid">
@@ -506,8 +574,8 @@
     </div>
   </div>
 
-  <!-- PROJECTS section -->
-  <div class="section-card" data-aos="fade-up" data-aos-delay="200">
+  <!-- Featured Projects -->
+  <div class="section-card">
     <div class="section-title"><i class="fas fa-cubes"></i> Featured Engineering Projects</div>
     <div class="projects-grid">
       <div class="project-card"><div class="project-icon"><i class="fas fa-video"></i></div><div class="project-name">WPS Recorder</div><div class="project-desc">HD screen recorder with floating controls, ideal for tutorials and gameplay.</div></div>
@@ -518,11 +586,11 @@
       <div class="project-card"><div class="project-icon"><i class="fab fa-instagram"></i></div><div class="project-name">Insta Saver</div><div class="project-desc">Save stories, reels, posts & IGTV quickly and reliably.</div></div>
       <div class="project-card"><div class="project-icon"><i class="fas fa-exchange-alt"></i></div><div class="project-name">Smart Transfer</div><div class="project-desc">Cross-platform file sharing, hotspot transfer, phone cloning.</div></div>
     </div>
-    <p style="margin-top: 1.2rem; background: #e9f3f8; border-radius: 1rem; padding: 0.7rem 1rem;"><i class="fas fa-microphone-alt"></i> <strong>Prototype highlight:</strong> Music therapy mobile application (RTU Liepaja) — user-centered design, testing, and stakeholder feedback integration.</p>
+    <p style="margin-top: 1.2rem; background: #e9f3f8; border-radius: 1rem; padding: 0.7rem 1rem; transition: all 0.3s;"><i class="fas fa-microphone-alt"></i> <strong>Prototype highlight:</strong> Music therapy mobile application (RTU Liepaja) — user-centered design, testing, and stakeholder feedback integration.</p>
   </div>
 
-  <!-- EDUCATION & LANGUAGES -->
-  <div class="section-card" data-aos="fade-up" data-aos-delay="250">
+  <!-- Education & Languages -->
+  <div class="section-card">
     <div class="section-title"><i class="fas fa-graduation-cap"></i> Education & Languages</div>
     <div class="edu-modern">
       <div class="edu-item-modern">
@@ -543,7 +611,7 @@
   </div>
 
   <!-- Core Competencies -->
-  <div class="section-card" data-aos="fade-up" data-aos-delay="300">
+  <div class="section-card">
     <div class="section-title"><i class="fas fa-medal"></i> Core Competencies</div>
     <div class="skills-grid">
       <span class="skill-badge">Analytical Thinking</span><span class="skill-badge">Problem Solving</span><span class="skill-badge">Detail Orientation</span>
@@ -564,9 +632,10 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   (function(){
-    AOS.init({ duration: 700, once: true, offset: 30 });
+    // Initialize AOS for scroll animations
+    AOS.init({ duration: 800, once: false, offset: 50, easing: 'ease-out-quad' });
     
-    // Enhanced image upload with better feedback & fallback handling
+    // Image upload with animation feedback
     const avatarContainer = document.getElementById('avatarContainer');
     const profileImg = document.getElementById('profileImage');
     const uploadHintSpan = document.getElementById('uploadHint');
@@ -581,12 +650,12 @@
           const reader = new FileReader();
           reader.onload = function(ev) {
             profileImg.src = ev.target.result;
-            uploadHintSpan.innerHTML = '<i class="fas fa-check-circle"></i> Photo updated!';
+            uploadHintSpan.innerHTML = '<i class="fas fa-check-circle"></i> Updated! ✨';
             setTimeout(() => {
               if(uploadHintSpan) uploadHintSpan.innerHTML = '<i class="fas fa-camera"></i> Click to update';
             }, 2000);
-            profileImg.style.transform = 'scale(1.02)';
-            setTimeout(() => { if(profileImg) profileImg.style.transform = ''; }, 250);
+            profileImg.style.transform = 'scale(1.05)';
+            setTimeout(() => { if(profileImg) profileImg.style.transform = ''; }, 300);
           };
           reader.readAsDataURL(file);
         } else {
@@ -597,7 +666,6 @@
     }
     
     if(avatarContainer) {
-      avatarContainer.style.cursor = 'pointer';
       avatarContainer.addEventListener('click', (e) => {
         e.stopPropagation();
         triggerUpload();
@@ -610,13 +678,18 @@
       });
     }
     
-    // subtle hover effect for contact pills
-    const contactItems = document.querySelectorAll('.contact-details a, .contact-details span');
-    contactItems.forEach(el => {
-      el.addEventListener('mouseenter', () => { el.style.transition = 'all 0.2s'; });
-    });
+    // Add intersection observer to replay card entrance (subtle)
+    const cards = document.querySelectorAll('.section-card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.style.animation = 'cardReveal 0.7s forwards';
+        }
+      });
+    }, { threshold: 0.1 });
+    cards.forEach(card => observer.observe(card));
     
-    console.log("Premium portfolio — refined header & professional photo display");
+    console.log("✨ Animated QA portfolio ready — smooth animations, interactive cards, floating effects");
   })();
 </script>
 </body>
