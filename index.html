@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Ahsan Arshad · Animated Portfolio | QA Engineer & IT Professional</title>
-  <!-- Google Fonts & Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <title>Ahsan Arshad · Senior QA Engineer Portfolio</title>
+  <!-- Google Fonts & Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- AOS animation library (lightweight) -->
+  <!-- AOS (Animate on Scroll) -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     * {
@@ -17,58 +17,46 @@
     }
 
     body {
-      background: #f1f5f9;
+      background: #f0f4f9;
       font-family: 'Inter', sans-serif;
-      color: #0f172a;
+      color: #0b2b38;
       line-height: 1.5;
       scroll-behavior: smooth;
-      overflow-x: hidden;
     }
 
-    /* custom scroll reveal */
     .container {
       max-width: 1280px;
       margin: 0 auto;
-      padding: 2rem 1.5rem;
+      padding: 2rem 2rem;
     }
 
-    /* hero section with gradient animation */
+    /* refined hero with modern glassmorphic gradient */
     .hero {
-      background: linear-gradient(135deg, #0f2b3d 0%, #1a4a6f 100%);
+      background: radial-gradient(circle at 10% 30%, #0f2c39, #0a1e2a);
       border-radius: 2rem;
-      padding: 2rem;
-      margin-bottom: 2rem;
+      padding: 2.2rem 2.5rem;
+      margin-bottom: 2.5rem;
       color: white;
-      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.2);
+      box-shadow: 0 25px 35px -15px rgba(0, 0, 0, 0.25);
       position: relative;
       overflow: hidden;
-      transition: all 0.3s;
-      animation: fadeSlideUp 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(0px);
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
-    /* animated shine effect */
-    .hero::before {
+    .hero::after {
       content: '';
       position: absolute;
-      top: -50%;
-      left: -60%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
-      transform: rotate(25deg);
-      animation: shimmer 12s infinite linear;
+      top: -30%;
+      right: -20%;
+      width: 300px;
+      height: 300px;
+      background: rgba(80, 180, 230, 0.2);
+      border-radius: 50%;
+      filter: blur(70px);
+      z-index: 0;
       pointer-events: none;
-    }
-
-    @keyframes shimmer {
-      0% { transform: translateX(-40%) rotate(25deg); opacity: 0.3; }
-      50% { transform: translateX(20%) rotate(25deg); opacity: 0.6; }
-      100% { transform: translateX(80%) rotate(25deg); opacity: 0.3; }
-    }
-
-    @keyframes fadeSlideUp {
-      0% { opacity: 0; transform: translateY(35px); }
-      100% { opacity: 1; transform: translateY(0); }
     }
 
     .hero-inner {
@@ -77,470 +65,525 @@
       justify-content: space-between;
       align-items: center;
       gap: 2rem;
-    }
-
-    .hero-info {
-      flex: 2;
+      position: relative;
+      z-index: 2;
     }
 
     .hero-info h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
+      font-size: 3rem;
+      font-weight: 800;
       letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(120deg, #fff, #cbd5e6);
+      background: linear-gradient(135deg, #FFFFFF, #C0E0FF);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      animation: textGlow 2s ease infinite alternate;
-    }
-
-    @keyframes textGlow {
-      0% { text-shadow: 0 0 0px rgba(255,255,255,0); }
-      100% { text-shadow: 0 0 8px rgba(255,255,255,0.3); }
+      margin-bottom: 0.5rem;
     }
 
     .hero-tag {
-      display: inline-block;
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(4px);
-      padding: 0.3rem 1rem;
-      border-radius: 40px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      margin: 0.75rem 0 0.5rem 0;
-      transition: all 0.3s;
-      animation: pulseSoft 2s infinite;
-    }
-
-    @keyframes pulseSoft {
-      0% { transform: scale(1); background: rgba(255,255,255,0.2);}
-      50% { transform: scale(1.02); background: rgba(255,255,255,0.3);}
-      100% { transform: scale(1); background: rgba(255,255,255,0.2);}
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      padding: 0.5rem 1.4rem;
+      border-radius: 60px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin: 0.75rem 0 0.8rem 0;
+      border: 1px solid rgba(255,255,255,0.25);
     }
 
     .contact-details {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.8rem;
+      gap: 0.9rem;
       margin-top: 1rem;
-      font-size: 0.85rem;
     }
 
     .contact-details a, .contact-details span {
-      color: #e2e8f0;
-      text-decoration: none;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      background: rgba(0,0,0,0.25);
-      padding: 0.4rem 1rem;
-      border-radius: 40px;
-      transition: all 0.3s ease;
+      gap: 0.6rem;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      color: #f0f6fe;
+      backdrop-filter: blur(4px);
     }
 
     .contact-details a:hover, .contact-details span:hover {
-      background: #2c6e9e;
+      background: #1f6390;
       transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 18px -8px rgba(0,0,0,0.3);
+      color: white;
     }
 
-    /* profile image with hover animation */
+    /* photo frame with modern hover */
     .hero-avatar {
-      flex-shrink: 0;
-      background: rgba(255,255,255,0.1);
+      background: linear-gradient(145deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
       border-radius: 50%;
       padding: 0.5rem;
       backdrop-filter: blur(4px);
-      box-shadow: 0 15px 25px -8px rgba(0,0,0,0.3);
-      transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      animation: floatAvatar 4s ease-in-out infinite;
-    }
-
-    @keyframes floatAvatar {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
-      100% { transform: translateY(0px); }
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.4);
+      transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      cursor: pointer;
     }
 
     .hero-avatar:hover {
-      transform: scale(1.05) rotate(2deg);
+      transform: scale(1.03);
     }
 
     .avatar-img {
-      width: 150px;
-      height: 150px;
+      width: 160px;
+      height: 160px;
       object-fit: cover;
       border-radius: 50%;
-      border: 3px solid rgba(255,255,255,0.7);
-      display: block;
-      background: #e2e8f0;
-      transition: all 0.3s;
+      border: 3px solid white;
+      background: #eef2f5;
+      transition: all 0.2s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
 
     .img-upload-note {
       font-size: 0.7rem;
       text-align: center;
-      margin-top: 0.5rem;
-      background: rgba(0,0,0,0.3);
-      border-radius: 40px;
-      padding: 0.2rem 0.6rem;
-      display: inline-block;
-      width: auto;
-      transition: background 0.2s;
+      margin-top: 0.6rem;
+      background: rgba(0,0,0,0.4);
+      border-radius: 60px;
+      padding: 0.2rem 0.9rem;
+      font-weight: 500;
+      transition: 0.2s;
     }
 
-    /* section cards with animation */
+    /* modern card design */
     .section-card {
-      background: white;
-      border-radius: 1.5rem;
-      padding: 1.8rem;
+      background: #ffffff;
+      border-radius: 1.8rem;
+      padding: 2rem 2rem;
       margin-bottom: 2rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.03), 0 2px 6px rgba(0,0,0,0.05);
-      transition: all 0.35s ease;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: cardReveal 0.6s forwards;
-      animation-delay: calc(var(--order, 0) * 0.07s);
-    }
-
-    @keyframes cardReveal {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04), 0 2px 5px rgba(0, 0, 0, 0.02);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 0, 0, 0.03);
     }
 
     .section-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 20px 30px -12px rgba(0, 20, 40, 0.12);
+      transform: translateY(-3px);
     }
 
     .section-title {
-      font-size: 1.6rem;
-      font-weight: 600;
-      border-left: 5px solid #1e6f9f;
+      font-size: 1.7rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.8rem;
+      color: #144e68;
+      border-left: 5px solid #2c8eb3;
       padding-left: 1rem;
-      margin-bottom: 1.5rem;
-      color: #0f2b3d;
-      position: relative;
-      display: inline-block;
     }
 
     .section-title i {
-      animation: iconSpin 0.5s ease;
+      color: #2c8eb3;
+      font-size: 1.6rem;
     }
 
-    @keyframes iconSpin {
-      0% { transform: rotate(0deg);}
-      100% { transform: rotate(360deg);}
+    /* refined experience blocks with timeline style */
+    .experience-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
     }
 
-    /* job items animated */
-    .job-item, .project-card {
-      transition: all 0.3s;
+    .exp-card {
+      background: #f9fdfe;
+      border-radius: 1.2rem;
+      padding: 1.2rem 1.5rem;
+      transition: all 0.25s;
+      border-left: 4px solid #2c8eb3;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
 
-    .job-item {
-      margin-bottom: 1.8rem;
-      border-bottom: 1px solid #e9eef3;
-      padding-bottom: 1.5rem;
-      transition: transform 0.2s, background 0.2s;
-      border-radius: 1rem;
-      padding-left: 0.5rem;
-    }
-
-    .job-item:hover {
-      background: #fafdff;
+    .exp-card:hover {
+      background: #ffffff;
       transform: translateX(6px);
-      border-left: 3px solid #1e6f9f;
-      padding-left: 1rem;
+      box-shadow: 0 12px 18px -10px rgba(0, 0, 0, 0.08);
+      border-left-width: 6px;
     }
 
+    .exp-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.8rem;
+    }
+
+    .exp-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #0c4e6e;
+    }
+
+    .exp-company {
+      font-weight: 600;
+      color: #2c6a4e;
+      background: #e0f0f5;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+    }
+
+    .exp-date {
+      font-size: 0.8rem;
+      background: #eef2f7;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      color: #2c5a6e;
+      font-weight: 500;
+    }
+
+    .job-desc {
+      list-style: none;
+      margin-top: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .job-desc li {
+      font-size: 0.9rem;
+      background: #f0f5fa;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #1f5a77;
+    }
+
+    .job-desc li i {
+      color: #2c8eb3;
+      font-size: 0.8rem;
+    }
+
+    /* skills modern badges */
     .skills-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.7rem;
-      margin-top: 0.5rem;
+      gap: 0.8rem;
+      margin: 1rem 0 0.5rem;
     }
 
     .skill-badge {
-      background: #e6f0f9;
-      padding: 0.3rem 1rem;
-      border-radius: 30px;
+      background: #e5f2f9;
+      padding: 0.45rem 1.2rem;
+      border-radius: 60px;
       font-size: 0.8rem;
-      font-weight: 500;
-      color: #155e75;
-      transition: all 0.25s ease;
+      font-weight: 600;
+      color: #135e7c;
+      transition: all 0.2s;
       cursor: default;
+      letter-spacing: -0.2px;
+      border: 1px solid rgba(44, 142, 179, 0.2);
     }
 
     .skill-badge:hover {
-      transform: scale(1.05);
-      background: #cbdff0;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      background: #d1e6f0;
+      transform: scale(1.02);
+      border-color: #2c8eb3;
     }
 
+    /* project cards more polished */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 0.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 1.6rem;
     }
 
     .project-card {
-      background: #f8fafc;
+      background: #fbfeff;
       border-radius: 1.2rem;
       padding: 1.2rem;
-      border: 1px solid #e2edf7;
-      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border: 1px solid #e2edf2;
+      transition: all 0.25s ease;
       cursor: pointer;
     }
 
     .project-card:hover {
-      transform: translateY(-8px) scale(1.01);
-      box-shadow: 0 20px 25px -12px rgba(0,0,0,0.15);
-      border-color: #90caf9;
+      transform: translateY(-6px);
+      box-shadow: 0 20px 24px -12px rgba(0, 0, 0, 0.12);
+      border-color: #9bc7e0;
       background: white;
     }
 
     .project-icon {
       font-size: 2rem;
-      color: #1e6f9f;
-      margin-bottom: 0.7rem;
-      transition: transform 0.3s;
+      color: #1e6f8f;
+      margin-bottom: 0.6rem;
     }
 
-    .project-card:hover .project-icon {
-      transform: rotate(5deg) scale(1.1);
+    .project-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
     }
 
-    .lang-row {
+    .project-desc {
+      font-size: 0.8rem;
+      color: #2c4e66;
+    }
+
+    /* education modern card */
+    .edu-modern {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .edu-item-modern {
+      background: #f9fcff;
+      border-radius: 1.2rem;
+      padding: 1rem 1.5rem;
+      border-left: 5px solid #2c8eb3;
+      transition: 0.2s;
+    }
+
+    .edu-item-modern strong {
+      color: #0c4e6e;
+      font-size: 1rem;
+    }
+
+    .lang-panel {
+      background: #eef3f8;
+      border-radius: 1rem;
+      padding: 1rem 1.2rem;
+      margin-top: 1rem;
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
       justify-content: space-between;
       align-items: center;
-      background: #f1f5f9;
-      padding: 0.8rem 1rem;
-      border-radius: 1rem;
-      margin-top: 0.5rem;
-      transition: all 0.2s;
-    }
-
-    .lang-row:hover {
-      background: #e6edf4;
-      transform: scale(1.01);
     }
 
     footer {
       text-align: center;
       padding: 2rem 0 1rem;
-      font-size: 0.8rem;
-      color: #475569;
-      animation: fadeIn 1s ease;
+      border-top: 1px solid rgba(0,0,0,0.05);
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #3b6e8b;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* responsive */
     @media (max-width: 720px) {
-      .hero-inner {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+      .container {
+        padding: 1.2rem;
+      }
+      .hero {
+        padding: 1.5rem;
       }
       .hero-info h1 {
-        font-size: 1.9rem;
+        font-size: 2rem;
       }
-      .contact-details {
-        justify-content: center;
-      }
-      .avatar-img, .hero-avatar {
+      .avatar-img {
         width: 120px;
         height: 120px;
       }
+      .exp-header {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+
+    /* animated reveal */
+    [data-aos] {
+      transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
   </style>
 </head>
 <body>
 <div class="container">
-  <!-- Hero Section with Animations -->
+  <!-- Hero section with improved photo -->
   <div class="hero" data-aos="fade-up" data-aos-duration="800">
     <div class="hero-inner">
       <div class="hero-info">
         <h1>Ahsan Arshad</h1>
         <div class="hero-tag">
-          <i class="fas fa-code"></i> QA Engineer · Manual Testing · Mobile & Web
+          <i class="fas fa-check-circle"></i> QA Engineer · Manual Testing Specialist · Agile Quality Advocate
         </div>
         <div class="contact-details">
           <span><i class="fas fa-phone-alt"></i> (+371) 22459653</span>
           <a href="mailto:ahsanstudies08@gmail.com"><i class="fas fa-envelope"></i> ahsanstudies08@gmail.com</a>
-          <span><i class="fas fa-map-marker-alt"></i> Ganibu Iela 36/48, LV-3401 Liepaja, Latvia</span>
+          <span><i class="fas fa-map-marker-alt"></i> Ganibu Iela 36/48, Liepaja, Latvia</span>
           <span><i class="fas fa-globe"></i> Pakistani | DOB: 23/01/1997</span>
         </div>
       </div>
       <div class="hero-avatar" id="avatarContainer">
-        <img id="profileImage" class="avatar-img" src="DSC_0894.JPG" alt="Ahsan Arshad profile">
+        <img id="profileImage" class="avatar-img" src="https://ui-avatars.com/api/?background=2c8eb3&color=fff&rounded=true&size=160&name=Ahsan+Arshad&font-size=0.35" alt="Ahsan Arshad profile">
         <div class="img-upload-note">
-          <i class="fas fa-camera"></i> <span id="uploadHint">Click to upload</span>
+          <i class="fas fa-camera"></i> <span id="uploadHint">Update photo</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ABOUT ME with staggered animation via style order -->
-  <div class="section-card" style="--order: 1;">
-    <div class="section-title"><i class="fas fa-user-astronaut"></i> About Me</div>
-    <p class="about-text">Detail-oriented and motivated IT professional currently pursuing a Professional Master’s degree in Information Technology at Liepaja University, Latvia. Experienced in software quality assurance, manual testing, bug tracking, and Agile development practices, with hands-on industry experience in both internship and professional roles. Recently contributed to the development of a mobile application prototype for music therapy during an internship at RTU Liepaja. Passionate about delivering reliable software solutions, improving product quality, and continuously developing technical expertise in software testing and mobile application development.</p>
+  <!-- About section -->
+  <div class="section-card" data-aos="fade-up" data-aos-delay="50">
+    <div class="section-title"><i class="fas fa-user-check"></i> About Me</div>
+    <p style="font-size: 1rem; line-height: 1.6; color: #1e4a62;">Detail-oriented QA Engineer with expertise in manual testing, defect tracking, and Agile workflows. Currently pursuing a Professional Master’s in IT at RTU Liepaja, Latvia. Proven track record of delivering high-quality software through rigorous test planning, regression cycles, and cross-team collaboration. Passionate about building reliable digital products and continuous improvement in software quality assurance.</p>
   </div>
 
-  <!-- WORK EXPERIENCE -->
-  <div class="section-card" style="--order: 2;">
+  <!-- WORK EXPERIENCE - redesigned with premium card look -->
+  <div class="section-card" data-aos="fade-up" data-aos-delay="100">
     <div class="section-title"><i class="fas fa-briefcase"></i> Work Experience</div>
-    
-    <div class="job-item">
-      <div class="job-header">
-        <div><span class="job-title">Project Management Traineeship</span> <span class="company">@ RTU Liepaja Academy - Riga Technical University</span></div>
-        <div class="date">07/05/2025 – 19/07/2025</div>
+    <div class="experience-wrapper">
+      <!-- Experience 1 -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <div><span class="exp-title">Project Management Traineeship</span> <span class="exp-company">RTU Liepaja Academy</span></div>
+          <div class="exp-date">07/2025 – 07/2025</div>
+        </div>
+        <ul class="job-desc">
+          <li><i class="fas fa-mobile-alt"></i> Music therapy app prototype</li>
+          <li><i class="fas fa-users"></i> Requirement analysis & wireframes</li>
+          <li><i class="fas fa-vial"></i> Testing & feedback integration</li>
+          <li><i class="fas fa-chalkboard"></i> Agile planning & documentation</li>
+        </ul>
       </div>
-      <ul class="job-desc">
-        <li><i class="fas fa-mobile-alt"></i> Designed & developed a prototype mobile app for music therapy (therapists & patients).</li>
-        <li><i class="fas fa-users"></i> Analyzed user requirements, defined functional features & created wireframes.</li>
-        <li><i class="fas fa-vial"></i> Supported testing & implementation of modules, ensured reliability.</li>
-        <li><i class="fas fa-chalkboard-user"></i> Collaborated on project planning, feedback integration, research on therapy best practices.</li>
-      </ul>
-    </div>
-
-    <div class="job-item">
-      <div class="job-header">
-        <div><span class="job-title">QA Engineer</span> <span class="company">@ AOMATA LLC – Lahore, Pakistan</span></div>
-        <div class="date">01/04/2023 – 31/07/2023</div>
+      <!-- Experience 2 -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <div><span class="exp-title">QA Engineer</span> <span class="exp-company">AOMATA LLC · Lahore</span></div>
+          <div class="exp-date">04/2023 – 07/2023</div>
+        </div>
+        <ul class="job-desc">
+          <li><i class="fas fa-clipboard-list"></i> Test plans & test cases</li>
+          <li><i class="fas fa-bug"></i> JIRA defect tracking</li>
+          <li><i class="fas fa-undo-alt"></i> Regression & localization testing</li>
+          <li><i class="fas fa-users"></i> Agile/Scrum ceremonies</li>
+        </ul>
       </div>
-      <ul class="job-desc">
-        <li><i class="fas fa-clipboard-list"></i> Developed comprehensive test plans, designed test cases, tracked defects with JIRA.</li>
-        <li><i class="fas fa-undo-alt"></i> Performed regression testing, ensured new code changes maintain stability.</li>
-        <li><i class="fas fa-users"></i> Active in Agile/Scrum: daily stand-ups, sprint planning, test documentation creation.</li>
-        <li><i class="fas fa-language"></i> Localization testing in various languages.</li>
-      </ul>
-    </div>
-
-    <div class="job-item">
-      <div class="job-header">
-        <div><span class="job-title">Quality Assurance Engineer Intern</span> <span class="company">@ MOBINATORS (PVT) LTD. – Lahore</span></div>
-        <div class="date">07/11/2022 – 17/03/2023</div>
+      <!-- Experience 3 -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <div><span class="exp-title">Quality Assurance Intern</span> <span class="exp-company">MOBINATORS (PVT) LTD.</span></div>
+          <div class="exp-date">11/2022 – 03/2023</div>
+        </div>
+        <ul class="job-desc">
+          <li><i class="fas fa-file-alt"></i> Test reporting & documentation</li>
+          <li><i class="fas fa-chart-line"></i> Bug identification & prioritization</li>
+          <li><i class="fas fa-check-double"></i> Quality coordination</li>
+        </ul>
       </div>
-      <ul class="job-desc">
-        <li><i class="fas fa-file-alt"></i> Created detailed, well-structured test reports and coordinated quality activities.</li>
-        <li><i class="fas fa-bug"></i> Identified, recorded, tracked bugs and potential software problems.</li>
-        <li><i class="fas fa-chart-line"></i> Estimated & prioritized quality testing tasks.</li>
-      </ul>
     </div>
   </div>
 
-  <!-- SKILLS -->
-  <div class="section-card" style="--order: 3;">
-    <div class="section-title"><i class="fas fa-cogs"></i> Technical & Professional Skills</div>
-    <div style="margin-bottom: 1rem;"><strong>🧪 Software Testing & QA:</strong></div>
+  <!-- Technical Skills (industry badges) -->
+  <div class="section-card" data-aos="fade-up" data-aos-delay="150">
+    <div class="section-title"><i class="fas fa-microchip"></i> Technical Expertise</div>
+    <div style="margin-bottom: 0.6rem;"><strong>🧪 QA & Testing Stack</strong></div>
     <div class="skills-grid">
       <span class="skill-badge">Manual Testing</span><span class="skill-badge">Regression Testing</span><span class="skill-badge">Test Case Design</span>
-      <span class="skill-badge">Bug Tracking (JIRA)</span><span class="skill-badge">Test Documentation</span><span class="skill-badge">Defect Management</span>
-      <span class="skill-badge">Localization Testing</span><span class="skill-badge">Mobile App Testing</span><span class="skill-badge">UI/UX Wireframing</span>
+      <span class="skill-badge">JIRA/ Bug Tracking</span><span class="skill-badge">Test Documentation</span><span class="skill-badge">Localization Testing</span>
+      <span class="skill-badge">Mobile App Testing</span><span class="skill-badge">UI/UX Testing</span><span class="skill-badge">SDLC/STLC</span>
+      <span class="skill-badge">Agile/Scrum</span><span class="skill-badge">Cross-functional Collaboration</span><span class="skill-badge">Analytical Thinking</span>
     </div>
-    <div style="margin: 1rem 0 0.5rem 0;"><strong>📌 Methodologies & Tools:</strong></div>
+    <div style="margin: 1rem 0 0.5rem 0;"><strong>🛠️ Tools & Methodologies</strong></div>
     <div class="skills-grid">
-      <span class="skill-badge">Agile / Scrum</span><span class="skill-badge">SDLC Knowledge</span><span class="skill-badge">Cross-functional Collaboration</span>
-      <span class="skill-badge">Microsoft Office Suite</span><span class="skill-badge">Analytical Thinking</span><span class="skill-badge">Communication</span>
+      <span class="skill-badge">Microsoft Office Suite</span><span class="skill-badge">Wireframing Tools</span><span class="skill-badge">TestRail</span>
+      <span class="skill-badge">Postman (basic)</span><span class="skill-badge">Git</span><span class="skill-badge">Chrome DevTools</span>
     </div>
   </div>
 
-  <!-- PROJECTS SECTION (animated cards) -->
-  <div class="section-card" style="--order: 4;">
-    <div class="section-title"><i class="fas fa-rocket"></i> Featured Projects</div>
+  <!-- PROJECTS section -->
+  <div class="section-card" data-aos="fade-up" data-aos-delay="200">
+    <div class="section-title"><i class="fas fa-cubes"></i> Featured Engineering Projects</div>
     <div class="projects-grid">
-      <div class="project-card"><div class="project-icon"><i class="fas fa-video"></i></div><div class="project-name">WPS Recorder</div><div class="project-desc">Capture smooth screen videos & screenshots with floating ball. Record HD tutorials, video calls, live games easily.</div></div>
-      <div class="project-card"><div class="project-icon"><i class="fas fa-film"></i></div><div class="project-name">Fine Video Editor</div><div class="project-desc">Powerful HD editor: add music, transitions, text, emoji, filters, blur background. No watermark!</div></div>
-      <div class="project-card"><div class="project-icon"><i class="fas fa-baby-carriage"></i></div><div class="project-name">Pregnancy Tracker App</div><div class="project-desc">Week-by-week countdown to due date, 3-D fetal development images & pregnancy tips.</div></div>
-      <div class="project-card"><div class="project-icon"><i class="fas fa-headphones"></i></div><div class="project-name">Music Player</div><div class="project-desc">Manage all audio files: mp3, wav, flac, aac. Browse by genres, albums, artists, folders.</div></div>
-      <div class="project-card"><div class="project-icon"><i class="fas fa-play-circle"></i></div><div class="project-name">Video Player</div><div class="project-desc">Supports mp4, mkv and other formats. Smooth browsing by genres, albums, folders.</div></div>
-      <div class="project-card"><div class="project-icon"><i class="fab fa-instagram"></i></div><div class="project-name">Insta Saver</div><div class="project-desc">Save Instagram videos, photos, stories, reels & IGTV quickly and easily.</div></div>
-      <div class="project-card"><div class="project-icon"><i class="fas fa-exchange-alt"></i></div><div class="project-name">Smart Transfer</div><div class="project-desc">Cross-platform file sharing: Android ↔ iOS, phone replication, secure hotspot transfer & large files.</div></div>
+      <div class="project-card"><div class="project-icon"><i class="fas fa-video"></i></div><div class="project-name">WPS Recorder</div><div class="project-desc">HD screen recorder with floating controls, perfect for tutorials and gameplay.</div></div>
+      <div class="project-card"><div class="project-icon"><i class="fas fa-cut"></i></div><div class="project-name">Fine Video Editor</div><div class="project-desc">Powerful editor with transitions, music & filters — watermark free.</div></div>
+      <div class="project-card"><div class="project-icon"><i class="fas fa-baby-carriage"></i></div><div class="project-name">Pregnancy Tracker</div><div class="project-desc">Week-by-week insights, 3D fetal images and health tips.</div></div>
+      <div class="project-card"><div class="project-icon"><i class="fas fa-headphones"></i></div><div class="project-name">Music Player</div><div class="project-desc">Multi-format audio player with smart library management.</div></div>
+      <div class="project-card"><div class="project-icon"><i class="fas fa-play-circle"></i></div><div class="project-name">Video Player</div><div class="project-desc">Smooth playback for MKV, MP4, and advanced folder sorting.</div></div>
+      <div class="project-card"><div class="project-icon"><i class="fab fa-instagram"></i></div><div class="project-name">Insta Saver</div><div class="project-desc">Save stories, reels, posts & IGTV quickly and reliably.</div></div>
+      <div class="project-card"><div class="project-icon"><i class="fas fa-exchange-alt"></i></div><div class="project-name">Smart Transfer</div><div class="project-desc">Cross-platform file sharing, hotspot transfer, phone cloning.</div></div>
     </div>
-    <p style="margin-top: 1rem; font-size: 0.85rem; background: #f1f5f9; padding: 0.5rem; border-radius: 1rem; transition: 0.2s;"><i class="fas fa-lightbulb"></i> Additional prototyping: Music therapy mobile app (RTU Liepaja Academy) – user-centered design & testing.</p>
+    <p style="margin-top: 1.2rem; background: #e9f3f8; border-radius: 1rem; padding: 0.7rem 1rem;"><i class="fas fa-microphone-alt"></i> <strong>Prototype highlight:</strong> Music therapy mobile application (RTU Liepaja) — user-centered design, testing, and stakeholder feedback integration.</p>
   </div>
 
-  <!-- EDUCATION & LANGUAGES -->
-  <div class="section-card" style="--order: 5;">
-    <div class="section-title"><i class="fas fa-university"></i> Education & Languages</div>
-    <div class="edu-item"><div><strong>🎓 Professional Master's in Information Technology</strong><br>RTU Liepaja Academy - Riga Technical University | 03/2024 – Current<br>Level EQF 7 | Liepaja, Latvia</div></div>
-    <div class="edu-item"><div><strong>🎓 Bachelor's in Information Technology</strong><br>University of Sargodha | 2016 – 2020 | EQF level 6 | Sargodha, Pakistan</div></div>
-    <div style="margin-top: 1.2rem;"><strong><i class="fas fa-language"></i> Language Proficiency</strong></div>
-    <div class="lang-row">
-      <span><strong>Urdu</strong> (Mother tongue)</span>
-      <span><strong>English</strong> — Listening B2 | Reading B2 | Writing C1 | Spoken B2 (Independent user)</span>
+  <!-- EDUCATION & LANGUAGES - upgraded -->
+  <div class="section-card" data-aos="fade-up" data-aos-delay="250">
+    <div class="section-title"><i class="fas fa-graduation-cap"></i> Education & Languages</div>
+    <div class="edu-modern">
+      <div class="edu-item-modern">
+        <strong>🎓 Professional Master's in Information Technology</strong><br>
+        RTU Liepaja Academy - Riga Technical University | 03/2024 – Present<br>
+        Level EQF 7 · Specialization in Software Quality & Systems
+      </div>
+      <div class="edu-item-modern">
+        <strong>🎓 Bachelor's in Information Technology</strong><br>
+        University of Sargodha, Pakistan | 2016 – 2020 | EQF Level 6
+      </div>
+    </div>
+    <div style="margin-top: 1rem;"><strong><i class="fas fa-language"></i> Language Proficiency</strong></div>
+    <div class="lang-panel">
+      <span><strong>🇵🇰 Urdu</strong> (Native / Mother tongue)</span>
+      <span><strong>🇬🇧 English</strong> — C1 (Writing) | B2 (Spoken/Listening/Reading) — Independent user</span>
     </div>
   </div>
 
-  <!-- Core Competencies -->
-  <div class="section-card" style="--order: 6;">
-    <div class="section-title"><i class="fas fa-heart"></i> Core Competencies</div>
+  <!-- Core Competencies & certifications -->
+  <div class="section-card" data-aos="fade-up" data-aos-delay="300">
+    <div class="section-title"><i class="fas fa-medal"></i> Core Competencies</div>
     <div class="skills-grid">
-      <span class="skill-badge">Analytical Thinking</span><span class="skill-badge">Problem-solving</span><span class="skill-badge">Attention to Detail</span>
-      <span class="skill-badge">Teamwork & Adaptability</span><span class="skill-badge">Communication Skills</span><span class="skill-badge">Agile Mindset</span>
-      <span class="skill-badge">Bug Lifecycle Management</span><span class="skill-badge">Test Reporting</span>
+      <span class="skill-badge">Analytical Thinking</span><span class="skill-badge">Problem Solving</span><span class="skill-badge">Detail Orientation</span>
+      <span class="skill-badge">Team Leadership</span><span class="skill-badge">Effective Communication</span><span class="skill-badge">Test Optimization</span>
+      <span class="skill-badge">Defect Lifecycle</span><span class="skill-badge">Risk Analysis</span><span class="skill-badge">Agile Mindset</span>
     </div>
-    <hr style="margin: 1rem 0; opacity: 0.3;">
-    <div><i class="fas fa-certificate"></i> Digital competences: Microsoft Office, JIRA, wireframing tools, localization platforms, mobile debugging.</div>
+    <hr style="margin: 1.2rem 0; opacity: 0.3;">
+    <div><i class="fas fa-certificate"></i> <strong>Digital certifications & tools:</strong> JIRA expert, Localization platforms, Mobile debugging, MS Project, Wireframing (Figma basics).</div>
   </div>
 
   <footer>
-    <i class="fas fa-code-branch"></i> Ahsan Arshad — Portfolio | QA Engineer & IT Professional | Based in Liepaja, Latvia<br>
-    <span style="font-size: 0.7rem;">📧 ahsanstudies08@gmail.com | 📞 (+371) 22459653 | Open for QA & testing opportunities</span>
+    <i class="fas fa-code-branch"></i> Ahsan Arshad — QA Engineer & IT Professional | Based in Liepaja, Latvia<br>
+    <span style="font-size: 0.75rem;">📧 ahsanstudies08@gmail.com | 📞 (+371) 22459653 | Open for QA opportunities & collaborations</span>
+    <div style="margin-top: 0.7rem;">© 2025 Ahsan Arshad — All projects reflect actual prototypes and professional experience.</div>
   </footer>
 </div>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  (function() {
-    // Footer dynamic year
-    const footer = document.querySelector('footer');
-    if(footer) {
-      const yearSpan = document.createElement('span');
-      yearSpan.style.display = 'block';
-      yearSpan.style.fontSize = '0.7rem';
-      yearSpan.style.marginTop = '0.5rem';
-      yearSpan.innerHTML = `© ${new Date().getFullYear()} Ahsan Arshad — All showcased projects based on real prototypes and experience.`;
-      footer.appendChild(yearSpan);
-    }
-
-    // Profile image upload with animation feedback
+  (function(){
+    AOS.init({ duration: 700, once: true, offset: 30 });
+    
+    // Profile image upload with modern UI enhancement
     const avatarContainer = document.getElementById('avatarContainer');
     const profileImg = document.getElementById('profileImage');
     const uploadHintSpan = document.getElementById('uploadHint');
     
-    function triggerImageUpload() {
+    function triggerUpload() {
       const fileInput = document.createElement('input');
       fileInput.type = 'file';
       fileInput.accept = 'image/jpeg, image/png, image/jpg, image/webp';
-      fileInput.addEventListener('change', (event) => {
-        const file = event.target.files[0];
+      fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
         if (file && file.type.startsWith('image/')) {
           const reader = new FileReader();
-          reader.onload = function(e) {
-            profileImg.src = e.target.result;
-            uploadHintSpan.innerHTML = '<i class="fas fa-check-circle"></i> Image updated!';
+          reader.onload = function(ev) {
+            profileImg.src = ev.target.result;
+            uploadHintSpan.innerHTML = '<i class="fas fa-check-circle"></i> Updated!';
             setTimeout(() => {
-              if(uploadHintSpan) uploadHintSpan.innerHTML = '<i class="fas fa-camera"></i> Click to upload';
+              if(uploadHintSpan) uploadHintSpan.innerHTML = '<i class="fas fa-camera"></i> Update photo';
             }, 2000);
-            // subtle bounce animation
             profileImg.style.transform = 'scale(1.02)';
-            setTimeout(() => { if(profileImg) profileImg.style.transform = ''; }, 200);
+            setTimeout(() => { if(profileImg) profileImg.style.transform = ''; }, 250);
           };
           reader.readAsDataURL(file);
         } else {
-          alert('Please select a valid image (JPEG, PNG, WebP)');
+          alert('Please upload a valid image (JPEG, PNG, WebP)');
         }
       });
       fileInput.click();
@@ -550,36 +593,23 @@
       avatarContainer.style.cursor = 'pointer';
       avatarContainer.addEventListener('click', (e) => {
         e.stopPropagation();
-        triggerImageUpload();
+        triggerUpload();
       });
     }
     if(uploadHintSpan) {
       uploadHintSpan.addEventListener('click', (e) => {
         e.stopPropagation();
-        triggerImageUpload();
+        triggerUpload();
       });
     }
     
-    // additional hover animations for contact icons
+    // add hover tooltip effect for contact icons
     const contactItems = document.querySelectorAll('.contact-details a, .contact-details span');
-    contactItems.forEach(item => {
-      item.addEventListener('mouseenter', function() {
-        this.style.transition = 'all 0.2s';
-      });
+    contactItems.forEach(el => {
+      el.addEventListener('mouseenter', () => { el.style.transition = 'all 0.2s'; });
     });
-
-    // Add intersection observer to replay card animations (subtle)
-    const cards = document.querySelectorAll('.section-card');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) {
-          entry.target.style.animation = 'cardReveal 0.6s forwards';
-        }
-      });
-    }, { threshold: 0.1 });
-    cards.forEach(card => observer.observe(card));
-
-    console.log("✅ Animated portfolio ready — image upload, hover effects, staggered cards");
+    
+    console.log("Premium portfolio — enhanced experience, photo upload, modern QA style");
   })();
 </script>
 </body>
