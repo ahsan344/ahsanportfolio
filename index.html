@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Ahsan Arshad · Animated Portfolio | QA Engineer & IT Professional</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- AOS animation library (lightweight) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f1f5f9;
+      font-family: 'Inter', sans-serif;
+      color: #0f172a;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* custom scroll reveal */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* hero section with gradient animation */
+    .hero {
+      background: linear-gradient(135deg, #0f2b3d 0%, #1a4a6f 100%);
+      border-radius: 2rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      color: white;
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.2);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+      animation: fadeSlideUp 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+    }
+
+    /* animated shine effect */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
+      transform: rotate(25deg);
+      animation: shimmer 12s infinite linear;
+      pointer-events: none;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-40%) rotate(25deg); opacity: 0.3; }
+      50% { transform: translateX(20%) rotate(25deg); opacity: 0.6; }
+      100% { transform: translateX(80%) rotate(25deg); opacity: 0.3; }
+    }
+
+    @keyframes fadeSlideUp {
+      0% { opacity: 0; transform: translateY(35px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .hero-info {
+      flex: 2;
+    }
+
+    .hero-info h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(120deg, #fff, #cbd5e6);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: textGlow 2s ease infinite alternate;
+    }
+
+    @keyframes textGlow {
+      0% { text-shadow: 0 0 0px rgba(255,255,255,0); }
+      100% { text-shadow: 0 0 8px rgba(255,255,255,0.3); }
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(4px);
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin: 0.75rem 0 0.5rem 0;
+      transition: all 0.3s;
+      animation: pulseSoft 2s infinite;
+    }
+
+    @keyframes pulseSoft {
+      0% { transform: scale(1); background: rgba(255,255,255,0.2);}
+      50% { transform: scale(1.02); background: rgba(255,255,255,0.3);}
+      100% { transform: scale(1); background: rgba(255,255,255,0.2);}
+    }
+
+    .contact-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+    }
+
+    .contact-details a, .contact-details span {
+      color: #e2e8f0;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0,0,0,0.25);
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-details a:hover, .contact-details span:hover {
+      background: #2c6e9e;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    /* profile image with hover animation */
+    .hero-avatar {
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      padding: 0.5rem;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 15px 25px -8px rgba(0,0,0,0.3);
+      transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      animation: floatAvatar 4s ease-in-out infinite;
+    }
+
+    @keyframes floatAvatar {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .hero-avatar:hover {
+      transform: scale(1.05) rotate(2deg);
+    }
+
+    .avatar-img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid rgba(255,255,255,0.7);
+      display: block;
+      background: #e2e8f0;
+      transition: all 0.3s;
+    }
+
+    .img-upload-note {
+      font-size: 0.7rem;
+      text-align: center;
+      margin-top: 0.5rem;
+      background: rgba(0,0,0,0.3);
+      border-radius: 40px;
+      padding: 0.2rem 0.6rem;
+      display: inline-block;
+      width: auto;
+      transition: background 0.2s;
+    }
+
+    /* section cards with animation */
+    .section-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.8rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.03), 0 2px 6px rgba(0,0,0,0.05);
+      transition: all 0.35s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: cardReveal 0.6s forwards;
+      animation-delay: calc(var(--order, 0) * 0.07s);
+    }
+
+    @keyframes cardReveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      border-left: 5px solid #1e6f9f;
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+      color: #0f2b3d;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title i {
+      animation: iconSpin 0.5s ease;
+    }
+
+    @keyframes iconSpin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+
+    /* job items animated */
+    .job-item, .project-card {
+      transition: all 0.3s;
+    }
+
+    .job-item {
+      margin-bottom: 1.8rem;
+      border-bottom: 1px solid #e9eef3;
+      padding-bottom: 1.5rem;
+      transition: transform 0.2s, background 0.2s;
+      border-radius: 1rem;
+      padding-left: 0.5rem;
+    }
+
+    .job-item:hover {
+      background: #fafdff;
+      transform: translateX(6px);
+      border-left: 3px solid #1e6f9f;
+      padding-left: 1rem;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 0.5rem;
+    }
+
+    .skill-badge {
+      background: #e6f0f9;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #155e75;
+      transition: all 0.25s ease;
+      cursor: default;
+    }
+
+    .skill-badge:hover {
+      transform: scale(1.05);
+      background: #cbdff0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .project-card {
+      background: #f8fafc;
+      border-radius: 1.2rem;
+      padding: 1.2rem;
+      border: 1px solid #e2edf7;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      cursor: pointer;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 20px 25px -12px rgba(0,0,0,0.15);
+      border-color: #90caf9;
+      background: white;
+    }
+
+    .project-icon {
+      font-size: 2rem;
+      color: #1e6f9f;
+      margin-bottom: 0.7rem;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover .project-icon {
+      transform: rotate(5deg) scale(1.1);
+    }
+
+    .lang-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
+      background: #f1f5f9;
+      padding: 0.8rem 1rem;
+      border-radius: 1rem;
+      margin-top: 0.5rem;
+      transition: all 0.2s;
+    }
+
+    .lang-row:hover {
+      background: #e6edf4;
+      transform: scale(1.01);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0 1rem;
+      font-size: 0.8rem;
+      color: #475569;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* responsive */
+    @media (max-width: 720px) {
+      .hero-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .hero-info h1 {
+        font-size: 1.9rem;
+      }
+      .contact-details {
+        justify-content: center;
+      }
+      .avatar-img, .hero-avatar {
+        width: 120px;
+        height: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- Hero Section with Animations -->
+  <div class="hero" data-aos="fade-up" data-aos-duration="800">
+    <div class="hero-inner">
+      <div class="hero-info">
+        <h1>Ahsan Arshad</h1>
+        <div class="hero-tag">
+          <i class="fas fa-code"></i> QA Engineer · Manual Testing · Mobile & Web
+        </div>
+        <div class="contact-details">
+          <span><i class="fas fa-phone-alt"></i> (+371) 22459653</span>
+          <a href="mailto:ahsanstudies08@gmail.com"><i class="fas fa-envelope"></i> ahsanstudies08@gmail.com</a>
+          <span><i class="fas fa-map-marker-alt"></i> Ganibi Iela 36/48, LV-3401 Liepaja, Latvia</span>
+          <span><i class="fas fa-globe"></i> Pakistani | DOB: 23/01/1997</span>
+        </div>
+      </div>
+      <div class="hero-avatar" id="avatarContainer">
+        <img id="profileImage" class="avatar-img" src="https://ui-avatars.com/api/?background=2c6e9e&color=fff&rounded=true&size=150&name=Ahsan+Arshad&bold=true" alt="Ahsan Arshad profile">
+        <div class="img-upload-note">
+          <i class="fas fa-camera"></i> <span id="uploadHint">Click to upload</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT ME with staggered animation via style order -->
+  <div class="section-card" style="--order: 1;">
+    <div class="section-title"><i class="fas fa-user-astronaut"></i> About Me</div>
+    <p class="about-text">Detail-oriented and motivated IT professional currently pursuing a Professional Master’s degree in Information Technology at Liepaja University, Latvia. Experienced in software quality assurance, manual testing, bug tracking, and Agile development practices, with hands-on industry experience in both internship and professional roles. Recently contributed to the development of a mobile application prototype for music therapy during an internship at RTU Liepaja. Passionate about delivering reliable software solutions, improving product quality, and continuously developing technical expertise in software testing and mobile application development.</p>
+  </div>
+
+  <!-- WORK EXPERIENCE -->
+  <div class="section-card" style="--order: 2;">
+    <div class="section-title"><i class="fas fa-briefcase"></i> Work Experience</div>
+    
+    <div class="job-item">
+      <div class="job-header">
+        <div><span class="job-title">Project Management Traineeship</span> <span class="company">@ RTU Liepaja Academy - Riga Technical University</span></div>
+        <div class="date">07/05/2025 – 19/07/2025</div>
+      </div>
+      <ul class="job-desc">
+        <li><i class="fas fa-mobile-alt"></i> Designed & developed a prototype mobile app for music therapy (therapists & patients).</li>
+        <li><i class="fas fa-users"></i> Analyzed user requirements, defined functional features & created wireframes.</li>
+        <li><i class="fas fa-vial"></i> Supported testing & implementation of modules, ensured reliability.</li>
+        <li><i class="fas fa-chalkboard-user"></i> Collaborated on project planning, feedback integration, research on therapy best practices.</li>
+      </ul>
+    </div>
+
+    <div class="job-item">
+      <div class="job-header">
+        <div><span class="job-title">QA Engineer</span> <span class="company">@ AOMATA LLC – Lahore, Pakistan</span></div>
+        <div class="date">01/04/2023 – 31/07/2023</div>
+      </div>
+      <ul class="job-desc">
+        <li><i class="fas fa-clipboard-list"></i> Developed comprehensive test plans, designed test cases, tracked defects with JIRA.</li>
+        <li><i class="fas fa-undo-alt"></i> Performed regression testing, ensured new code changes maintain stability.</li>
+        <li><i class="fas fa-users"></i> Active in Agile/Scrum: daily stand-ups, sprint planning, test documentation creation.</li>
+        <li><i class="fas fa-language"></i> Localization testing in various languages.</li>
+      </ul>
+    </div>
+
+    <div class="job-item">
+      <div class="job-header">
+        <div><span class="job-title">Quality Assurance Engineer Intern</span> <span class="company">@ MOBINATORS (PVT) LTD. – Lahore</span></div>
+        <div class="date">07/11/2022 – 17/03/2023</div>
+      </div>
+      <ul class="job-desc">
+        <li><i class="fas fa-file-alt"></i> Created detailed, well-structured test reports and coordinated quality activities.</li>
+        <li><i class="fas fa-bug"></i> Identified, recorded, tracked bugs and potential software problems.</li>
+        <li><i class="fas fa-chart-line"></i> Estimated & prioritized quality testing tasks.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section-card" style="--order: 3;">
+    <div class="section-title"><i class="fas fa-cogs"></i> Technical & Professional Skills</div>
+    <div style="margin-bottom: 1rem;"><strong>🧪 Software Testing & QA:</strong></div>
+    <div class="skills-grid">
+      <span class="skill-badge">Manual Testing</span><span class="skill-badge">Regression Testing</span><span class="skill-badge">Test Case Design</span>
+      <span class="skill-badge">Bug Tracking (JIRA)</span><span class="skill-badge">Test Documentation</span><span class="skill-badge">Defect Management</span>
+      <span class="skill-badge">Localization Testing</span><span class="skill-badge">Mobile App Testing</span><span class="skill-badge">UI/UX Wireframing</span>
+    </div>
+    <div style="margin: 1rem 0 0.5rem 0;"><strong>📌 Methodologies & Tools:</strong></div>
+    <div class="skills-grid">
+      <span class="skill-badge">Agile / Scrum</span><span class="skill-badge">SDLC Knowledge</span><span class="skill-badge">Cross-functional Collaboration</span>
+      <span class="skill-badge">Microsoft Office Suite</span><span class="skill-badge">Analytical Thinking</span><span class="skill-badge">Communication</span>
+    </div>
+  </div>
+
+  <!-- PROJECTS SECTION (animated cards) -->
+  <div class="section-card" style="--order: 4;">
+    <div class="section-title"><i class="fas fa-rocket"></i> Featured Projects</div>
+    <div class="projects-grid">
+      <div class="project-card"><div class="project-icon"><i class="fas fa-video"></i></div><div class="project-name">WPS Recorder</div><div class="project-desc">Capture smooth screen videos & screenshots with floating ball. Record HD tutorials, video calls, live games easily.</div></div>
+      <div class="project-card"><div class="project-icon"><i class="fas fa-film"></i></div><div class="project-name">Fine Video Editor</div><div class="project-desc">Powerful HD editor: add music, transitions, text, emoji, filters, blur background. No watermark!</div></div>
+      <div class="project-card"><div class="project-icon"><i class="fas fa-baby-carriage"></i></div><div class="project-name">Pregnancy Tracker App</div><div class="project-desc">Week-by-week countdown to due date, 3-D fetal development images & pregnancy tips.</div></div>
+      <div class="project-card"><div class="project-icon"><i class="fas fa-headphones"></i></div><div class="project-name">Music Player</div><div class="project-desc">Manage all audio files: mp3, wav, flac, aac. Browse by genres, albums, artists, folders.</div></div>
+      <div class="project-card"><div class="project-icon"><i class="fas fa-play-circle"></i></div><div class="project-name">Video Player</div><div class="project-desc">Supports mp4, mkv and other formats. Smooth browsing by genres, albums, folders.</div></div>
+      <div class="project-card"><div class="project-icon"><i class="fab fa-instagram"></i></div><div class="project-name">Insta Saver</div><div class="project-desc">Save Instagram videos, photos, stories, reels & IGTV quickly and easily.</div></div>
+      <div class="project-card"><div class="project-icon"><i class="fas fa-exchange-alt"></i></div><div class="project-name">Smart Transfer</div><div class="project-desc">Cross-platform file sharing: Android ↔ iOS, phone replication, secure hotspot transfer & large files.</div></div>
+    </div>
+    <p style="margin-top: 1rem; font-size: 0.85rem; background: #f1f5f9; padding: 0.5rem; border-radius: 1rem; transition: 0.2s;"><i class="fas fa-lightbulb"></i> Additional prototyping: Music therapy mobile app (RTU Liepaja Academy) – user-centered design & testing.</p>
+  </div>
+
+  <!-- EDUCATION & LANGUAGES -->
+  <div class="section-card" style="--order: 5;">
+    <div class="section-title"><i class="fas fa-university"></i> Education & Languages</div>
+    <div class="edu-item"><div><strong>🎓 Professional Master's in Information Technology</strong><br>RTU Liepaja Academy - Riga Technical University | 03/2024 – Current<br>Level EQF 7 | Liepaja, Latvia</div></div>
+    <div class="edu-item"><div><strong>🎓 Bachelor's in Information Technology</strong><br>University of Sargodha | 2016 – 2020 | EQF level 6 | Sargodha, Pakistan</div></div>
+    <div style="margin-top: 1.2rem;"><strong><i class="fas fa-language"></i> Language Proficiency</strong></div>
+    <div class="lang-row">
+      <span><strong>Urdu</strong> (Mother tongue)</span>
+      <span><strong>English</strong> — Listening B2 | Reading B2 | Writing C1 | Spoken B2 (Independent user)</span>
+    </div>
+  </div>
+
+  <!-- Core Competencies -->
+  <div class="section-card" style="--order: 6;">
+    <div class="section-title"><i class="fas fa-heart"></i> Core Competencies</div>
+    <div class="skills-grid">
+      <span class="skill-badge">Analytical Thinking</span><span class="skill-badge">Problem-solving</span><span class="skill-badge">Attention to Detail</span>
+      <span class="skill-badge">Teamwork & Adaptability</span><span class="skill-badge">Communication Skills</span><span class="skill-badge">Agile Mindset</span>
+      <span class="skill-badge">Bug Lifecycle Management</span><span class="skill-badge">Test Reporting</span>
+    </div>
+    <hr style="margin: 1rem 0; opacity: 0.3;">
+    <div><i class="fas fa-certificate"></i> Digital competences: Microsoft Office, JIRA, wireframing tools, localization platforms, mobile debugging.</div>
+  </div>
+
+  <footer>
+    <i class="fas fa-code-branch"></i> Ahsan Arshad — Portfolio | QA Engineer & IT Professional | Based in Liepaja, Latvia<br>
+    <span style="font-size: 0.7rem;">📧 ahsanstudies08@gmail.com | 📞 (+371) 22459653 | Open for QA & testing opportunities</span>
+  </footer>
+</div>
+
+<script>
+  (function() {
+    // Footer dynamic year
+    const footer = document.querySelector('footer');
+    if(footer) {
+      const yearSpan = document.createElement('span');
+      yearSpan.style.display = 'block';
+      yearSpan.style.fontSize = '0.7rem';
+      yearSpan.style.marginTop = '0.5rem';
+      yearSpan.innerHTML = `© ${new Date().getFullYear()} Ahsan Arshad — All showcased projects based on real prototypes and experience.`;
+      footer.appendChild(yearSpan);
+    }
+
+    // Profile image upload with animation feedback
+    const avatarContainer = document.getElementById('avatarContainer');
+    const profileImg = document.getElementById('profileImage');
+    const uploadHintSpan = document.getElementById('uploadHint');
+    
+    function triggerImageUpload() {
+      const fileInput = document.createElement('input');
+      fileInput.type = 'file';
+      fileInput.accept = 'image/jpeg, image/png, image/jpg, image/webp';
+      fileInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file && file.type.startsWith('image/')) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            profileImg.src = e.target.result;
+            uploadHintSpan.innerHTML = '<i class="fas fa-check-circle"></i> Image updated!';
+            setTimeout(() => {
+              if(uploadHintSpan) uploadHintSpan.innerHTML = '<i class="fas fa-camera"></i> Click to upload';
+            }, 2000);
+            // subtle bounce animation
+            profileImg.style.transform = 'scale(1.02)';
+            setTimeout(() => { if(profileImg) profileImg.style.transform = ''; }, 200);
+          };
+          reader.readAsDataURL(file);
+        } else {
+          alert('Please select a valid image (JPEG, PNG, WebP)');
+        }
+      });
+      fileInput.click();
+    }
+    
+    if(avatarContainer) {
+      avatarContainer.style.cursor = 'pointer';
+      avatarContainer.addEventListener('click', (e) => {
+        e.stopPropagation();
+        triggerImageUpload();
+      });
+    }
+    if(uploadHintSpan) {
+      uploadHintSpan.addEventListener('click', (e) => {
+        e.stopPropagation();
+        triggerImageUpload();
+      });
+    }
+    
+    // additional hover animations for contact icons
+    const contactItems = document.querySelectorAll('.contact-details a, .contact-details span');
+    contactItems.forEach(item => {
+      item.addEventListener('mouseenter', function() {
+        this.style.transition = 'all 0.2s';
+      });
+    });
+
+    // Add intersection observer to replay card animations (subtle)
+    const cards = document.querySelectorAll('.section-card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.style.animation = 'cardReveal 0.6s forwards';
+        }
+      });
+    }, { threshold: 0.1 });
+    cards.forEach(card => observer.observe(card));
+
+    console.log("✅ Animated portfolio ready — image upload, hover effects, staggered cards");
+  })();
+</script>
+</body>
+</html>
